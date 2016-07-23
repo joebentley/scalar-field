@@ -1,8 +1,15 @@
 {
-  "name": "scalarfield",
-  "version": "0.0.1",
-  "dependencies": {
-    "nerdamer": "^0.5.7",
-    "two.js": "^0.6.0"
-  }
+    "name": "scalarfield",
+    "version": "0.0.1",
+    "dependencies": {
+        "nerdamer": "^0.5.7",
+        "two.js": "^0.6.0"
+    },
+    "devDependencies": {
+        "xo": "^0.16.0"
+    },
+    "xo": {
+        "space": 4,
+        "globals": ["nerdamer", "$", "Two"]
+    }
 }
