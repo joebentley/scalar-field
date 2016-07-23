@@ -23,6 +23,8 @@ scalarfield.Vector2.prototype.makeArrow = function(two, x, y) {
         return;
     }
 
+    // TODO: Implement length as well as direction
+
     var main = two.makeLine(0, 0, 10, 0),
         tick = two.makeLine(10, 0, 6, -2);
 
@@ -48,6 +50,10 @@ scalarfield.calculateGradient = function(scalarField) {
     return new scalarfield.VectorField2(nerdamer('diff(' + scalarField + ', x)'), nerdamer('diff(' + scalarField + ', y)'));
 };
 
+scalarfield.calculateCurl = function(vectorField) {
+    return nerdamer('diff(' + vectorField.y + ', x) - diff(' + vectorField.x + ', y)');
+};
+
 scalarfield.plotScalarField = function(two, field) {
     var numCells = 30,
         cellWidth = two.width / numCells,
@@ -57,6 +63,7 @@ scalarfield.plotScalarField = function(two, field) {
 
     for (var x = 0; x < numCells; x++) {
         for (var y = 0; y < numCells; y++) {
+            // TODO: Fix negative values
             var b = Math.round((v.values[x + y * numCells].text() / v.max) * 255);
             var rect = two.makeRectangle(x * cellWidth, y * cellHeight, cellWidth + 1, cellHeight + 1);
 
@@ -108,21 +115,25 @@ scalarfield.plotVectorField = function(two, vectorField) {
     two.update();
 };
 
+scalarfield.plotCurlField = function(two, vectorField) {
+    return scalarfield.plotScalarField(scalarfield.calculateCurl(vectorField));
+};
+
 // TODO: Move to main.js
-var scalarElem = $('#scalar_plot')[0];
-var vectorElem = $('#vector_plot')[0];
-var twoScalar = new Two({ type: Two.Types.canvas, width: 500, height: 500 }).appendTo(scalarElem);
-var twoVector = new Two({ type: Two.Types.canvas, width: 500, height: 500 }).appendTo(vectorElem);
+var scalarElem = $('#scalar_plot')[0],
+    vectorElem = $('#vector_plot')[0],
+    twoScalar = new Two({ type: Two.Types.canvas, width: 500, height: 500 }).appendTo(scalarElem),
+    twoVector = new Two({ type: Two.Types.canvas, width: 500, height: 500 }).appendTo(vectorElem);
 
 function update() {
     var expression = $('#scalar_field').val();
-    var vectorField = scalarfield.calculateGradient(nerdamer(expression));
-    $('#gradient').text(vectorField.toString());
+    var gradientField = scalarfield.calculateGradient(nerdamer(expression));
+    $('#gradient').text(gradientField.toString());
 
     twoScalar.clear();
     twoVector.clear();
     scalarfield.plotScalarField(twoScalar, nerdamer(expression));
-    scalarfield.plotVectorField(twoVector, vectorField);
+    scalarfield.plotVectorField(twoVector, gradientField);
 }
 
 $('#update').click(update);
