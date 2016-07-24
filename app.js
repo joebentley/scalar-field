@@ -65,8 +65,8 @@
 
         for (var x = 0; x < numCells; x++) {
             for (var y = 0; y < numCells; y++) {
-                // TODO: Fix negative values
-                var b = Math.round((v.values[x + (y * numCells)].text() / v.max) * 255);
+                // Abs away negative values
+                var b = Math.abs(Math.round((v.values[x + (y * numCells)].text() / v.max) * 255));
                 var rect = two.makeRectangle(x * cellWidth, y * cellHeight, cellWidth + 1, cellHeight + 1);
 
                 rect.fill = 'rgb(' + b + ', ' + b + ', ' + b + ')';
