@@ -23,16 +23,21 @@
 
         <h1>Gradient of Scalar Field</h1>
 
-        <p>
-            Enter a function of x and/or y: <input id="scalar_field" type="text" value="x^2 * y^2">
-            <input id="update" type="button" value="Update">
-            <span id="gradient"></span><span id="vector"></span>
-        </p>
+        <div id="hidden" style="visibility: hidden;">
+            <p>
+                Enter a function of x and/or y: \(\psi (x, y) =\) <input id="scalar_field" type="text" value="x^2 * y^2">
+                <input id="update" type="button" value="Update">
+            </p>
 
-        <div class="table">
-            <div class="table-row">
-                <div class="table-cell" id="scalar_plot"></div>
-                <div class="table-cell" id="vector_plot"></div>
+            <p>
+                <span id="gradient">\[ \nabla \psi = 0 \hat{i} + 0 \hat{j} \]</span>
+            </p>
+
+            <div class="table">
+                <div class="table-row">
+                    <div class="table-cell" id="scalar_plot"></div>
+                    <div class="table-cell" id="vector_plot"></div>
+                </div>
             </div>
         </div>
 

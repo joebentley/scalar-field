@@ -1,4 +1,4 @@
-/* globals nerdamer Two $ */
+/* globals nerdamer Two $ MathJax */
 
 var sf = {};
 
@@ -189,7 +189,13 @@ var sf = {};
     function update () {
       var expression = $('#scalar_field').val()
       var gradientField = scalarfield.calculateGradient(nerdamer(expression))
-      $('#gradient').text(gradientField.toString())
+
+      // Display gradient on page
+      $('#gradient').text('\\[ \\nabla \\psi = ' +
+        stripExpr(gradientField.x.toString()) + ' \\hat{i} + ' +
+        stripExpr(gradientField.y.toString()) + ' \\hat{j} \\]')
+
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub])
 
       twoScalar.clear()
       twoVector.clear()
@@ -216,5 +222,10 @@ var sf = {};
     } else if (x > max) {
       return max
     }
+  }
+
+  // Strip expression of multiplication signs replacing with spaces
+  function stripExpr (expr) {
+    return expr.replace(/\*/g, ' ')
   }
 })(sf)

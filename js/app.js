@@ -1,3 +1,8 @@
-/* globals sf $ */
+/* globals sf $ MathJax */
 
-$(document).ready(sf.runApp)
+/* Run app when MathJax has loaded. */
+MathJax.Hub.Queue(function () {
+  // Unhide everything
+  $('#hidden').css('visibility', '')
+  sf.runApp()
+})
