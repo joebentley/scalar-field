@@ -10,3 +10,7 @@ scalar-field
 * ~~Mathjax the gradient output~~
 
 * Add explanation text
+
+* Label plots
+
+* Axes on plots

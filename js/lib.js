@@ -192,8 +192,8 @@ var sf = {};
 
       // Display gradient on page
       $('#gradient').text('\\[ \\nabla \\psi = ' +
-        stripExpr(gradientField.x.toString()) + ' \\hat{i} + ' +
-        stripExpr(gradientField.y.toString()) + ' \\hat{j} \\]')
+        stripExpr(gradientField.x.toString()) + ' \\mathbf{i} + ' +
+        stripExpr(gradientField.y.toString()) + ' \\mathbf{j} \\]')
 
       MathJax.Hub.Queue(['Typeset', MathJax.Hub])
 
