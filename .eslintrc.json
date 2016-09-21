@@ -3,11 +3,5 @@
     "plugins": [
         "standard",
         "promise"
-    ],
-    "globals": {
-      "$": true,
-      "nerdamer": true,
-      "Two": true,
-      "sf": true
-    }
+    ]
 }

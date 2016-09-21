@@ -1,3 +1,5 @@
+/* globals nerdamer Two $ */
+
 var sf = {};
 
 (function SF (scalarfield) {
