@@ -180,7 +180,6 @@ var sf = {};
       height: 500
     }).appendTo(scalarElem)
     var twoVector = new Two({
-      type: Two.Types.canvas,
       width: 500,
       height: 500
     }).appendTo(vectorElem)
@@ -206,7 +205,7 @@ var sf = {};
     update()
   }
 
-  // Helper functions
+  // Clamp x between min and max
   function clamp (x, min, max) {
     if (x < min) {
       return min
