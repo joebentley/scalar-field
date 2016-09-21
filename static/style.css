@@ -21,3 +21,27 @@ a:hover {
 .mjx-math {
   color: #000;
 }
+
+#scalar_plot {
+  position: relative;
+  right: 1em;
+}
+
+#vector_plot {
+  position: relative;
+  left: 1em;
+}
+
+.table {
+  display: table;
+  margin: 2em auto;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 3px 10px;
+}

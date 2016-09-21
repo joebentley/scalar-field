@@ -172,16 +172,18 @@ var sf = {};
   }
 
   scalarfield.runApp = function () {
+    var size = 400
+
     var scalarElem = $('#scalar_plot')[0]
     var vectorElem = $('#vector_plot')[0]
     var twoScalar = new Two({
       type: Two.Types.canvas,
-      width: 500,
-      height: 500
+      width: size,
+      height: size
     }).appendTo(scalarElem)
     var twoVector = new Two({
-      width: 500,
-      height: 500
+      width: size,
+      height: size
     }).appendTo(vectorElem)
 
     function update () {
