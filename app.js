@@ -1,2 +1,2 @@
 
-$(document).ready(sf.runApp);
+$(document).ready(sf.runApp)
