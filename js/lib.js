@@ -95,7 +95,7 @@ var sf = {};
   }
 
   /* Return indexed scalar field values in an area of width, height divided into
-   * numCells in each dimension, returning values + max */
+   * numCells in each dimension, returning values & max */
   scalarfield.generateScalarField = function (field, numCells, width, height) {
     var cellWidth = width / numCells
     var cellHeight = height / numCells

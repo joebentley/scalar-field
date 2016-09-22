@@ -9,8 +9,16 @@ scalar-field
 
 * ~~Mathjax the gradient output~~
 
-* Add explanation text
+* Move to bootstrap
+
+* ~~Add explanation text~~
+
+  * Make physics example collapsable
+
+* Fix styling of button and text inputs
 
 * Label plots
 
 * Axes on plots
+
+  * Allow student to change limits that the scalar and vector function is sampled at

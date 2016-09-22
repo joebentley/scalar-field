@@ -23,6 +23,84 @@
 
         <h1>Gradient of Scalar Field</h1>
 
+        <p>
+            The gradient of a scalar function is a basic topic in vector calculus
+            that has widespread uses in Physics and Engineering. For example, let
+            \(\mathbf{F}\) be a given <em>conservative</em> force, i.e., a force
+            such that the work done in moving a particle from a point \(A\) to a
+            point \(B\) is independent of the path taken. This means that if we
+            start and end our trajectory in the same place, i.e. \(A = B\), then
+            the work done must be zero, no matter the path, since by definition of
+            a conservative force, any path must be equivalent to the path in which
+            no distance is travelled. So for a closed trajectory \(C\),
+        </p>
+
+        \[W = \oint_C \mathbf{F} \cdot d\mathbf{r} = 0.\]
+
+        <p>
+            Now let \(c\) be a simple (no self-intersections) curve from the origin
+            to some point \(x\) in space. Then we can defined a scalar function
+            called the <em>potential at \(x\)</em>,
+        </p>
+
+        \[\phi(x) = - \int_c \mathbf{F} \cdot d\mathbf{r}.\]
+
+        <p>
+            By our equation above, we know that this integral must be the same for
+            any choice of path \(c\) so long as it starts at the origin, and ends
+            at \(x\), so the function \(\phi(x)\) has one well-defined value
+            independent of the choice of \(c\). Now, by the fundamental theorem
+            of calculus, we have that,
+        </p>
+
+        \[\phi(x) = \int_c \nabla \phi \cdot d\mathbf{r},\]
+
+        <p>
+            and hence we have that \(\mathbf{F} = -\nabla \phi\). So any conservative
+            force is simply the negative gradient of some potential. This is useful
+            in many places, for one it is easier to work with a scalar potential
+            then a force field, since we only have to consider scalar values rather
+            than vectors (which have three components in space).
+        </p>
+
+        <p>
+            It is also useful to
+            build the intuition of potential as being a hill which a ball rolls down.
+            Below you will see that the gradient will always point in the direction in
+            which the scalar function is increasing the most quickly, so at a given
+            point a conservative force will always point in the direction that the
+            potential is <em>decreasing</em> most quickly, due to the minus sign.
+            Hence, the force will always act in the direction that tries to minimise
+            the potential energy, until we reach some kind of minimum. In fact,
+            the minus sign was introduced for just this reason. If the minus
+            sign were not there, then for a particle with energy \(E = T + V = \text{constant}\),
+            where \(V\) is the potential energy, and \(T\) is the kinetic energy,
+            if we placed a particle at some point where \(V = V_0 > 0\), then the
+            force would move it in a direction that <em>increases</em> the potential
+            energy. If we are in a harmonic potential, i.e. \(V = x^2 / 2\), then
+            the potential energy would increase without limit until \(V > E\) in which
+            case the kinetic energy \(T\) would need to be negative, which is impossible.
+        </p>
+
+        <p>
+            This app allows the user to enter an arbitrary scalar function of two
+            variables, \(\psi(x, y)\), and calculates its vector gradient.
+            The scalar field is shown on the left as a pixelated heat map. The scalar
+            function is averaged over the square, so that brighter squares correspond
+            to areas where the function has a greater absolute value, and darker squares
+            correspond to values closer to zero. The vector field on the left plots
+            the direction of the 2-D gradient of the scalar function, given by,
+        </p>
+
+        \[\nabla \psi(x, y) = \frac{\partial \psi(x, y)}{\partial x} \mathbf{i}
+                            + \frac{\partial \psi(x, y)}{\partial y} \mathbf{j} \]
+
+        <p>
+            The vectors, shown as arrows, are normalised, and do not display the magnitude.
+            Vectors of length zero, i.e. points such that \(\nabla \psi(x, y) = \mathbf{0}\),
+            are displayed as points. The centre of both plots is the coordinate origin \((0, 0)\).
+        </p>
+
         <div id="hidden" style="visibility: hidden;">
             <p>
                 Enter a function of x and/or y: \(\psi (x, y) =\) <input id="scalar_field" type="text" value="x^2 * y^2">
@@ -30,7 +108,7 @@
             </p>
 
             <p>
-                <span id="gradient">\[ \nabla \psi = 0 \hat{i} + 0 \hat{j} \]</span>
+                <span id="gradient"></span>
             </p>
 
             <div class="table">
@@ -43,5 +121,11 @@
 
         <script src="js/lib.js"></script>
         <script src="js/app.js"></script>
+
+        <!-- Live Reload -->
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+        </script>
     </body>
 </html>
