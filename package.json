@@ -9,6 +9,7 @@
     "watch": "node watch.js"
   },
   "devDependencies": {
+    "bower": "^1.7.9",
     "eslint": "^3.1.1",
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.0",

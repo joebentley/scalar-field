@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Gradient</title>
 
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/style.css" />
 
   <script type="text/x-mathjax-config">
@@ -20,68 +21,88 @@
   <script src="node_modules/nerdamer/nerdamer.core.js"></script>
   <script src="node_modules/nerdamer/Algebra.js"></script>
   <script src="node_modules/nerdamer/Calculus.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-  <h1>Gradient of Scalar Field</h1>
+  <div class="container">
+    <div class="row" id="content">
+      <div class="col-xs-1"></div>
 
-  <div id="hidden" style="visibility: hidden;">
-    <p>
-      The gradient of a scalar function is a basic topic in vector calculus that has widespread uses in Physics and Engineering. For example, let \(\mathbf{F}\) be a given <em>conservative</em> force, i.e., a force such that the work done in moving a
-      particle from a point \(A\) to a point \(B\) is independent of the path taken. This means that if we start and end our trajectory in the same place, i.e. \(A = B\), then the work done must be zero, no matter the path, since by definition of a conservative
-      force, any path must be equivalent to the path in which no distance is travelled. So for a closed trajectory \(C\),
-    </p>
+      <div class="col-xs-10">
+        <h1>Gradient of Scalar Field</h1>
 
-    \[W = \oint_C \mathbf{F} \cdot d\mathbf{r} = 0.\]
+        <div id="hidden" style="visibility: hidden;">
 
-    <p>
-      Now let \(c\) be a simple (no self-intersections) curve from the origin to some point \(x\) in space. Then we can defined a scalar function called the <em>potential at \(x\)</em>,
-    </p>
+          <button id="show-derivation" class="btn btn-default"
+            data-toggle="collapse" data-target="#derivation">Show/Hide Conservative Forces Derivation</button>
 
-    \[\phi(x) = - \int_c \mathbf{F} \cdot d\mathbf{r}.\]
+          <div class="collapse panel panel-default" id="derivation">
+            <div class="panel-body">
+              <p>
+                The gradient of a scalar function is a basic topic in vector calculus that has widespread uses in Physics and Engineering. For example, let \(\mathbf{F}\) be a given <em>conservative</em> force, i.e., a force such that the work done in moving a
+                particle from a point \(A\) to a point \(B\) is independent of the path taken. This means that if we start and end our trajectory in the same place, i.e. \(A = B\), then the work done must be zero, no matter the path, since by definition of a conservative
+                force, any path must be equivalent to the path in which no distance is travelled. So for a closed trajectory \(C\),
+              </p>
 
-    <p>
-      By our equation above, we know that this integral must be the same for any choice of path \(c\) so long as it starts at the origin, and ends at \(x\), so the function \(\phi(x)\) has one well-defined value independent of the choice of \(c\). Now, by the
-      fundamental theorem of calculus, we have that,
-    </p>
+              \[W = \oint_C \mathbf{F} \cdot d\mathbf{r} = 0.\]
 
-    \[\phi(x) = \int_c \nabla \phi \cdot d\mathbf{r},\]
+              <p>
+                Now let \(c\) be a simple (no self-intersections) curve from the origin to some point \(x\) in space. Then we can defined a scalar function called the <em>potential at \(x\)</em>,
+              </p>
 
-    <p>
-      and hence we have that \(\mathbf{F} = -\nabla \phi\). So any conservative force is simply the negative gradient of some potential. This is useful in many places, for one it is easier to work with a scalar potential then a force field, since we only have
-      to consider scalar values rather than vectors (which have three components in space).
-    </p>
+              \[\phi(x) = - \int_c \mathbf{F} \cdot d\mathbf{r}.\]
 
-    <p>
-      It is also useful to build the intuition of potential as being a hill which a ball rolls down. Below you will see that the gradient will always point in the direction in which the scalar function is increasing the most quickly, so at a given point a conservative
-      force will always point in the direction that the potential is <em>decreasing</em> most quickly, due to the minus sign. Hence, the force will always act in the direction that tries to minimise the potential energy, until we reach some kind
-      of minimum. In fact, the minus sign was introduced for just this reason. If the minus sign were not there, then for a particle with energy \(E = T + V = \text{constant}\), where \(V\) is the potential energy, and \(T\) is the kinetic energy, if
-      we placed a particle at some point where \(V = V_0 > 0\), then the force would move it in a direction that <em>increases</em> the potential energy. If we are in a harmonic potential, i.e. \(V = x^2 / 2\), then the potential energy would increase
-      without limit until \(V > E\) in which case the kinetic energy \(T\) would need to be negative, which is impossible.
-    </p>
+              <p>
+                By our equation above, we know that this integral must be the same for any choice of path \(c\) so long as it starts at the origin, and ends at \(x\), so the function \(\phi(x)\) has one well-defined value independent of the choice of \(c\). Now, by the
+                fundamental theorem of calculus, we have that,
+              </p>
 
-    <p>
-      This app allows the user to enter an arbitrary scalar function of two variables, \(\psi(x, y)\), and calculates its vector gradient. The scalar field is shown on the left as a pixelated heat map. The scalar function is averaged over the square, so that
-      brighter squares correspond to areas where the function has a greater absolute value, and darker squares correspond to values closer to zero. The vector field on the left plots the direction of the 2-D gradient of the scalar function, given by,
-    </p>
+              \[\phi(x) = \int_c \nabla \phi \cdot d\mathbf{r},\]
 
-    \[\nabla \psi(x, y) = \frac{\partial \psi(x, y)}{\partial x} \mathbf{i} + \frac{\partial \psi(x, y)}{\partial y} \mathbf{j} \]
+              <p>
+                and hence we have that \(\mathbf{F} = -\nabla \phi\). So any conservative force is simply the negative gradient of some potential. This is useful in many places, for one it is easier to work with a scalar potential then a force field, since we only have
+                to consider scalar values rather than vectors (which have three components in space).
+              </p>
 
-    <p>
-      The vectors, shown as arrows, are normalised, and do not display the magnitude. Vectors of length zero, i.e. points such that \(\nabla \psi(x, y) = \mathbf{0}\), are displayed as points. The centre of both plots is the coordinate origin \((0, 0)\).
-    </p>
+              <p>
+                It is also useful to build the intuition of potential as being a hill which a ball rolls down. Below you will see that the gradient will always point in the direction in which the scalar function is increasing the most quickly, so at a given point a conservative
+                force will always point in the direction that the potential is <em>decreasing</em> most quickly, due to the minus sign. Hence, the force will always act in the direction that tries to minimise the potential energy, until we reach some kind
+                of minimum. In fact, the minus sign was introduced for just this reason. If the minus sign were not there, then for a particle with energy \(E = T + V = \text{constant}\), where \(V\) is the potential energy, and \(T\) is the kinetic energy, if
+                we placed a particle at some point where \(V = V_0 > 0\), then the force would move it in a direction that <em>increases</em> the potential energy. If we are in a harmonic potential, i.e. \(V = x^2 / 2\), then the potential energy would increase
+                without limit until \(V > E\) in which case the kinetic energy \(T\) would need to be negative, which is impossible.
+              </p>
+            </div>
+          </div>
 
-    <p>
-      Enter a function of x and/or y: \(\psi (x, y) =\) <input id="scalar_field" type="text" value="x^2 * y^2">
-      <input id="update" type="button" value="Update">
-    </p>
+          <p>
+            This app allows the user to enter an arbitrary scalar function of two variables, \(\psi(x, y)\), and calculates its vector gradient. The scalar field is shown on the left as a pixelated heat map. The scalar function is averaged over the square, so that
+            brighter squares correspond to areas where the function has a greater absolute value, and darker squares correspond to values closer to zero. The vector field on the left plots the direction of the 2-D gradient of the scalar function, given by,
+          </p>
 
-    <p>
-      <span id="gradient"></span>
-    </p>
+          \[\nabla \psi(x, y) = \frac{\partial \psi(x, y)}{\partial x} \mathbf{i} + \frac{\partial \psi(x, y)}{\partial y} \mathbf{j} \]
 
-    <div class="table">
-      <div class="table-row">
-        <div class="table-cell" id="scalar_plot"></div>
-        <div class="table-cell" id="vector_plot"></div>
+          <p>
+            The vectors, shown as arrows, are normalised, and do not display the magnitude. Vectors of length zero, i.e. points such that \(\nabla \psi(x, y) = \mathbf{0}\), are displayed as points. The centre of both plots is the coordinate origin \((0, 0)\).
+          </p>
+
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="scalar_field">Enter a function of x and/or y: \(\psi (x, y) =\)</label>
+              <input id="scalar_field" class="form-control" type="text" value="x^2 * y^2">
+            </div>
+            <input id="update" class="btn btn-default" type="button" value="Update">
+          </div>
+
+          <p>
+            <span id="gradient"></span>
+          </p>
+
+          <div class="row">
+            <div class="col-xs-6"><div id="scalar_plot"></div></div>
+            <div class="col-xs-6"><div id="vector_plot"></div></div>
+          </div>
+        </div>
+
+        <div class="col-xs-1"></div>
       </div>
     </div>
   </div>
@@ -90,10 +111,10 @@
   <script src="js/app.js"></script>
 
   <!-- Live Reload -->
-  <script>
+  <!-- <script>
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
       ':35729/livereload.js?snipver=1"></' + 'script>')
-  </script>
+  </script> -->
 </body>
 
 </html>

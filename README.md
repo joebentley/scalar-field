@@ -9,13 +9,15 @@ scalar-field
 
 * ~~Mathjax the gradient output~~
 
-* Move to bootstrap
+* ~~Move to bootstrap~~
+
+  * Handle narrow screen widths
 
 * ~~Add explanation text~~
 
   * Make physics example collapsable
 
-* Fix styling of button and text inputs
+* ~~Fix styling of button and text inputs~~
 
 * Label plots
 

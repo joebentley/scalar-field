@@ -1,47 +1,21 @@
-body {
-  margin: 5em auto;
-  max-width: 60em;
-
-  font-family: "Helvetica", "Arial", sans-serif;
-  color: #333;
-}
-
-h1 {
-  color: #111;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: #ff0000
-}
-
 .mjx-math {
   color: #000;
 }
 
 #scalar_plot {
-  position: relative;
-  right: 1em;
+  margin: 3em;
+  text-align: center;
 }
 
 #vector_plot {
-  position: relative;
-  left: 1em;
+  margin: 3em;
+  text-align: center;
 }
 
-.table {
-  display: table;
-  margin: 2em auto;
+#content {
+  margin-top: 3em;
 }
 
-.table-row {
-  display: table-row;
-}
-
-.table-cell {
-  display: table-cell;
-  padding: 3px 10px;
+#show-derivation {
+  margin: 2em 0;
 }
